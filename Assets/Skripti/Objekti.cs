@@ -3,14 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Objekti : MonoBehaviour {
+	public GameObject atkritumuMasina;
+	public GameObject atraPalidziba;
+	public GameObject autobuss;
 
-	// Use this for initialization
+	[HideInInspector]
+	public Vector2 atkrMKoord;
+	[HideInInspector]
+	public Vector2 atraPKoord;
+	[HideInInspector]
+	public Vector2 bussKoord;
+
+	public Canvas kanva;
+
+	public AudioSource audioAvots;
+	public AudioClip[] skanasKoatskanot;
+
+	[HideInInspector]
+	public bool vaiIstajaVieta = false;
+	public GameObject pedejaisVilktais = null;
+
 	void Start () {
-		
-	}
+		atkrMKoord = atkritumuMasina.GetComponent<RectTransform>().localPosition;
+        atraPKoord = atraPalidziba.GetComponent<RectTransform>().localPosition;
+        bussKoord = autobuss.GetComponent<RectTransform>().localPosition;
+    }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
