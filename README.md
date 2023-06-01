@@ -10,3 +10,6 @@ Projekts demonstrē Drag un Drop funkcionalitāte. Spēlēs mērķis ir pēc ies
 - [x] Mainīt objekta augstumu pa Y
 - [x] Mainīt objekta rotāciju pa Z
 - [x] Audio efekti
+- [x] Pievienot daudzus transportlīdzekļus
+- [x] Izveidojiet sakuma ainu
+- [ ] Izveidojiet paziņojums beigumā
