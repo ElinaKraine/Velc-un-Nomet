@@ -25,6 +25,18 @@ public class objektuTransformacija : MonoBehaviour {
 						localScale.x, objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().localScale.y - 0.001f);
                 }
             }
+            if (Input.GetKey(KeyCode.LeftArrow)) {
+                if (objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().localScale.x >= 0.3f) {
+                    objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().transform.localScale = new Vector2(objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().
+                        localScale.x-0.001f, objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().localScale.y);
+                }
+            }
+            if (Input.GetKey(KeyCode.RightArrow)) {
+                if (objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().localScale.x <= 0.85f) {
+                    objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().transform.localScale = new Vector2(objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().
+                        localScale.x + 0.001f, objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().localScale.y);
+                }
+            }
         }
 	}
 }
