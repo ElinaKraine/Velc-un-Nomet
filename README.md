@@ -12,4 +12,4 @@ Projekts demonstrē Drag un Drop funkcionalitāte. Spēlēs mērķis ir pēc ies
 - [x] Audio efekti
 - [x] Pievienot daudzus transportlīdzekļus
 - [x] Izveidojiet sakuma ainu
-- [ ] Izveidojiet paziņojums beigumā
+- [x] Izveidojiet paziņojums beigumā
