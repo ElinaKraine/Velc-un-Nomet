@@ -44,14 +44,14 @@ public class Objekti : MonoBehaviour {
 
     public Canvas kanva;
 
-    public GameObject poga;
-    public GameObject kartinka;
-    public GameObject tekst;
-    public int masinasSkaits=0;
-    private float sakumaLaiks;
-    public GameObject z1;
-    public GameObject z2;
-    public GameObject z3;
+    public GameObject poga; //Poga, lai restartētu spēli
+    public GameObject kartinka; //izkartne
+    public GameObject tekst; //Teksta lodziņš, kurā būs redzams rezultārs
+    public int masinasSkaits=0; //Papildu mainigais, lai noteikt, cik daudz mašīnas atrodas to pareizajās vietās
+    private float sakumaLaiks; //Mainigais, kas skaita laiku no palaišanas sākuma
+    public GameObject z1; //pirma zvaigzne
+    public GameObject z2; //otra zvaigzne
+    public GameObject z3; //treša zvaigzne
 
 	public AudioSource audioAvots;
 	public AudioClip[] skanasKoatskanot;
@@ -73,33 +73,34 @@ public class Objekti : MonoBehaviour {
         trak1Koord = traktors1.GetComponent<RectTransform>().localPosition;
         trak5Koord = traktors5.GetComponent<RectTransform>().localPosition;
         ugunsKoord = ugunsdzeseji.GetComponent<RectTransform>().localPosition;
-        sakumaLaiks = Time.time;
+        sakumaLaiks = Time.time; //laiks ir sācis skaitīties
     }
+    //Metode, lai pārbaudītu spēles galarezultātu un rezultāta parādīšana
     public void parbaudisana() {
-        if (masinasSkaits >= 12) {
-            kartinka.SetActive(true);
-            poga.SetActive(true);
-            tekst.SetActive(true);
-            float cikLaiks = Time.time - sakumaLaiks;
-            int stundas = (int) cikLaiks / 3600;
-            int minutes = (int) (cikLaiks%3600) / 60;
-            int sekundes = (int) (cikLaiks%3600) % 60;
-            string laiks = string.Format("{0:00}:{1:00}:{2:00}", stundas, minutes, sekundes);
-            string str = "Tavs rezultats: \n" + laiks;
-            tekst.GetComponent<Text>().text = str;
-            if (minutes<1)
+        if (masinasSkaits >= 12) { //Ja visas mašīnas atrodas pareizajās vietās
+            kartinka.SetActive(true); //Parādās izkartne
+            poga.SetActive(true); //Parādās poga
+            tekst.SetActive(true); //Parādās teksta lodziņš
+            float cikLaiks = Time.time - sakumaLaiks; //cikLaiks saturēs laika daudzumu sekundēs no brīža, kad tika izsaukta Start() metode, līdz brīdim, kad visas mašīnas atrodas savas pareizajas vietās
+            int stundas = (int) cikLaiks / 3600; //aprēķina stundas
+            int minutes = (int) (cikLaiks%3600) / 60; //aprēķina minutes
+            int sekundes = (int) (cikLaiks%3600) % 60; //aprēķina sekundes
+            string laiks = string.Format("{0:00}:{1:00}:{2:00}", stundas, minutes, sekundes); //Formatējo, lai būtu hh:mm:ss formats
+            string str = "Tavs rezultats: \n" + laiks; //teksta saglabāšana
+            tekst.GetComponent<Text>().text = str; //teksts saglabā teksta lodziņā
+            if (minutes<2) //ja spēle ilga mazāk nekā divas minūtes
             {
-                z1.SetActive(true);
+                z1.SetActive(true); //visas zvaigznes ir redzamas
                 z2.SetActive(true);
                 z3.SetActive(true);
-            }else if(minutes<2)
+            }else if(minutes<3) //ja spēle ilga mazāk nekā trīs minūtes
             {
-                z1.SetActive(true);
+                z1.SetActive(true); //tikai divas zvaigznes ir redzamas
                 z2.SetActive(true);
             }
-            else
+            else //ja spēle ilga vairāk nekā trīs minūtes
             {
-                z1.SetActive(true);
+                z1.SetActive(true); //viena zvaigzne ir redzama
             }
         }
     }
