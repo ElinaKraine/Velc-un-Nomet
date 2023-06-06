@@ -25,6 +25,8 @@ public class NomesanasVieta : MonoBehaviour, IDropHandler {
                     eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
                     eventData.pointerDrag.GetComponent<RectTransform>().localRotation = GetComponent<RectTransform>().localRotation;
                     eventData.pointerDrag.GetComponent<RectTransform>().localScale = GetComponent<RectTransform>().localScale;
+                    objektuSkripts.masinasSkaits++;
+                    objektuSkripts.parbaudisana();
                     switch(eventData.pointerDrag.tag) {
                         case "atkritumu":
                             objektuSkripts.audioAvots.PlayOneShot(objektuSkripts.skanasKoatskanot[1]);

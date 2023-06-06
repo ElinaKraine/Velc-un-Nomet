@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Objekti : MonoBehaviour {
 	public GameObject atkritumuMasina;
@@ -43,6 +44,15 @@ public class Objekti : MonoBehaviour {
 
     public Canvas kanva;
 
+    public GameObject poga;
+    public GameObject kartinka;
+    public GameObject tekst;
+    public int masinasSkaits=0;
+    private float sakumaLaiks;
+    public GameObject z1;
+    public GameObject z2;
+    public GameObject z3;
+
 	public AudioSource audioAvots;
 	public AudioClip[] skanasKoatskanot;
 
@@ -63,6 +73,35 @@ public class Objekti : MonoBehaviour {
         trak1Koord = traktors1.GetComponent<RectTransform>().localPosition;
         trak5Koord = traktors5.GetComponent<RectTransform>().localPosition;
         ugunsKoord = ugunsdzeseji.GetComponent<RectTransform>().localPosition;
+        sakumaLaiks = Time.time;
     }
-	
+    public void parbaudisana() {
+        if (masinasSkaits >= 12) {
+            kartinka.SetActive(true);
+            poga.SetActive(true);
+            tekst.SetActive(true);
+            float cikLaiks = Time.time - sakumaLaiks;
+            int stundas = (int) cikLaiks / 3600;
+            int minutes = (int) (cikLaiks%3600) / 60;
+            int sekundes = (int) (cikLaiks%3600) % 60;
+            string laiks = string.Format("{0:00}:{1:00}:{2:00}", stundas, minutes, sekundes);
+            string str = "Tavs rezultats: \n" + laiks;
+            tekst.GetComponent<Text>().text = str;
+            if (minutes<1)
+            {
+                z1.SetActive(true);
+                z2.SetActive(true);
+                z3.SetActive(true);
+            }else if(minutes<2)
+            {
+                z1.SetActive(true);
+                z2.SetActive(true);
+            }
+            else
+            {
+                z1.SetActive(true);
+            }
+        }
+    }
+
 }
